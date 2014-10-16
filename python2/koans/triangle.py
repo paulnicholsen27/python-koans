@@ -18,9 +18,16 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+    sides_names = {1: 'equilateral', 2: 'isosceles', 3: 'scalene'}
+    if not all(map(positive, [a,b,c])):
+        raise TriangleError
+    sm, med, lg = sorted([a, b, c])
+    if not (sm + med > lg):
+        raise TriangleError
+    return sides_names[len(set([a,b,c]))]
 
+def positive(num):
+    return num > 0
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(StandardError):

@@ -11,46 +11,50 @@ class AboutControlStatements(Koan):
             result = 'true value'
         else:
             result = 'false value'
-        self.assertEqual(__, result)
+        self.assertEqual('true value', result)
 
     def test_if_then_statements(self):
         result = 'default value'
         if True:
             result = 'true value'
-        self.assertEqual(__, result)
+        self.assertEqual('true value', result)
 
     def test_while_statement(self):
         i = 1
         result = 1
-        while i <= 10:
+        while i <= 5:
             result = result * i
             i += 1
-        self.assertEqual(__, result)
+        self.assertEqual(120, result)
 
     def test_break_statement(self):
         i = 1
         result = 1
         while True:
-            if i > 10: break
+            if i > 5: 
+                break
             result = result * i
             i += 1
-        self.assertEqual(__, result)
+        self.assertEqual(120, result)
 
     def test_continue_statement(self):
         i = 0
         result = []
-        while i < 10:
+        while i < 5:
             i += 1
-            if (i % 2) == 0: continue
+            if (i % 2) == 0:
+                continue
             result.append(i)
-        self.assertEqual(__, result)
+        self.assertEqual([1, 3, 5], result)
 
     def test_for_statement(self):
         phrase = ["fish", "and", "chips"]
-        result = []
-        for item in phrase:
-            result.append(item.upper())
-        self.assertEqual([__, __, __], result)
+
+        def cap(word):
+            return word.upper()
+
+        result = map(cap, phrase)
+        self.assertEqual(['FISH', 'AND', 'CHIPS'], result)
 
     def test_for_statement_with_tuples(self):
         round_table = [
@@ -64,7 +68,7 @@ class AboutControlStatements(Koan):
             result.append("Contestant: '" + knight + \
             "'   Answer: '" + answer + "'")
 
-        text = __
+        text = "Contestant: '" + 'Robin' + "'   Answer: '" + 'Blue! I mean Green!' + "'"
 
         self.assertMatch(text, result[2])
 
